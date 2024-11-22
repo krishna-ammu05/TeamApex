@@ -4,7 +4,11 @@ const App = () => {
   return (
     <div>
       {/* //md prefix utility */}
-      <section className="grid gap-7 md:grid-cols-3 md:items-center md:justify-center md:text-left">
+      {/* <section className="grid gap-7 sm:max-xl:bg-blue-400 md:grid-cols-3
+       md:items-center md:justify-center md:text-left sm:max-xl:p-4"> */}
+       {/* custome breakpoint range */}
+         <section className="grid gap-7 sm:max-xl:bg-blue-400 tablet:grid-cols-3
+       tablet:items-center tablet:justify-center tablet:text-left sm:max-xl:p-4">
       {/* <section className=" m-0 h-screen flex justify-center items-center text-center bg-twitter-blue text-2xl p-12 md:p-14 lg:p-16 xl:pp-20 "> */}
         <div>
           <img src="https://png.pngtree.com/background/20230520/original/pngtree-modern-office-desk-design-ideas-picture-image_2677246.jpg" alt="" />
