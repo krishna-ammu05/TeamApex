@@ -71,75 +71,95 @@ console.log( typeof x)
     branch:'CSE',
     college:'JNTUHUCEJ'
 }
+
+var ourDog={
+    name:"julie",
+    legs:4,
+    tails:1,
+    friends:["everything!"]
+};
  
+var testObj = {
+    "name":"shiva",
+    "rollno":22,
+    "branch":"CSE"
+
+};
+testObj.name ="shiva krishna"
+
+var nameValue = testObj.name ;
+console.log(testObj)
+
 console.log(student)
 //For individual prop we use DOT notation
 console.log(student.name)
 console.log(typeof student)
 console.log(typeof student.name)
 
+
+
 //Arrays
-const arr=[1,2,3,4,5]
-console.log(arr)
-console.log('type of array is=>',typeof arr)
+// const arr=[1,2,3,4,5]
+// console.log(arr)
+// console.log('type of array is=>',typeof arr)
 
-//Date
-const date =new Date()
-console.log(date)
-console.log('Type of Date is=>', typeof date)
+// //Date
+// const date =new Date()
+// console.log(date)
+// console.log('Type of Date is=>', typeof date)
 
-//Statically typed
-let message ='Helloworld!'
-console.log(message)
+// //Statically typed
+// let message ='Helloworld!'
+// console.log(message)
 
-message= 15;
-console.log(message)
+// message= 15;
+// console.log(message)
 
-//operators (same as in 'C')
-//Logic and Control Flow
-const age1 = 18;
-if(age1> 18){
-    console.log('You may enter!')
-}else if(age1==18){
-    console.log('You just turned 18')
-}else{
-    console.log('Grow Up!')
-}
-//While Loop
+// //operators (same as in 'C')
+// //Logic and Control Flow
+// const age1 = 18;
+// if(age1> 18){
+//     console.log('You may enter!')
+// }else if(age1==18){
+//     console.log('You just turned 18')
+// }else{
+//     console.log('Grow Up!')
+// }
+// //While Loop
 
-let i =0;
-while(i<10){
-    console.log(i)
-    i++
-}
+// let i =0;
+// while(i<10){
+//     console.log(i)
+//     i++
+// }
 
-//For Loop
-for(let j=0;j < 10; j++){
-    console.log('j=',j)
-}
+// //For Loop
+// for(let j=0;j < 10; j++){
+//     console.log('j=',j)
+// }
 
-//Functions
-//function declaration
-function square(num){
-    console.log(`number is ${num}`)
-    return num * num;
-    console.log(`number is ${num}`)
-    //after return stmt it doesn't care about any other stmsts
-}
-//function call
+// //Functions
+// //function declaration
+// function square(num){
+//     console.log(`number is ${num}`)
+//     return num * num;
+//     console.log(`number is ${num}`)
+//     //after return stmt it doesn't care about any other stmsts
+// }
+// //function call
 
-const mul = square(6);
-console.log(`Square is=>`,mul)
+// const mul = square(6);
+// console.log(`Square is=>`,mul)
 
-function sayHi(name){
-    console.log(`Hi,${name}`)
-}
+// function sayHi(name){
+//     console.log(`Hi,${name}`)
+// }
 
-sayHi('krishna')
+// sayHi('krishna')
 
-//Arrow Function
-const add =(a,b)=>{
-    return a+b;
-}
-const add_result = (5,9);
-console.log(add_result)
+// //Arrow Function
+// const add =(a,b)=>{
+//     return a+b;
+// }
+// const add_result = (5,9);
+// console.log(add_result)
