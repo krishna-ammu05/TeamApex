@@ -7,17 +7,7 @@ var rgb = [255, 234, 232];
 var newUser = [112, "example@google.com"];
 newUser[1] = "krishna";
 newUser.push(90);
-//Enums
-//Enums allow a developer to define a set of named constants. Using enums can make 
-//it easier to document intent, or create a set of distinct cases. 
-var SeatChoice;
-(function (SeatChoice) {
-    SeatChoice[SeatChoice["AISLE"] = 10] = "AISLE";
-    SeatChoice[SeatChoice["MIDDLE"] = 11] = "MIDDLE";
-    SeatChoice[SeatChoice["WINDOW"] = 12] = "WINDOW";
-    SeatChoice[SeatChoice["FOURTH"] = 13] = "FOURTH";
-})(SeatChoice || (SeatChoice = {}));
-var hcSeat = SeatChoice.AISLE;
+var hcSeat = 10 /* SeatChoice.AISLE */;
 //Numeric enums
 var Direction;
 (function (Direction) {
@@ -54,7 +44,7 @@ var LogLevel;
 })(LogLevel || (LogLevel = {}));
 function printImportant(key, message) {
     var num = LogLevel[key];
-    if (num <= LogLevel.INFO) {
+    if (num <= LogLevel.WARN) {
         console.log("Log level key is:", key);
         console.log("Log level value is:", num);
         console.log("Log level message is:", message);

@@ -12,7 +12,7 @@ newUser.push(90)
 //Enums
 //Enums allow a developer to define a set of named constants. Using enums can make 
 //it easier to document intent, or create a set of distinct cases. 
-enum SeatChoice{
+const enum SeatChoice{
     AISLE = 10,
     MIDDLE = 11,
     WINDOW =12,
