@@ -20,4 +20,4 @@ interface Bottle{
     brand :string,
     type:number
 }
-identityFour<Bottle>({})
+// identityFour<Bottle>()
