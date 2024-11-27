@@ -78,6 +78,13 @@ export const CountryDetails: React.FC = () => {
                         <strong>Longitude:</strong> {countryInfo.latlng[1]}
                         <sup>°</sup>
                     </p>
+                    <div className="flex items-center justify-center h-2">
+                        <div className="text-sm text-gray-700 h-4">Country Flag:</div>
+                        <img src={countryInfo.flags.svg} className="h-[6px] w-[6px]" alt="Country Flag" />
+
+                    </div>
+
+
                 </div>
             ) : (
                 <p className="text-red-500 text-center">No data found</p>
