@@ -80,7 +80,9 @@ export const CountryDetails: React.FC = () => {
                     </p>
                     <div className="flex items-center justify-center h-2">
                         <div className="text-sm text-gray-700 h-4">Country Flag:</div>
-                        <img src={countryInfo.flags.svg} className="h-[6px] w-[6px]" alt="Country Flag" />
+                        <div className='h-6 w-auto'>
+                        <img src={countryInfo.flags.svg} height="50px" alt="Country Flag" />
+                        </div>
 
                     </div>
 
