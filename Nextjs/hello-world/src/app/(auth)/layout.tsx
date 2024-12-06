@@ -1,12 +1,36 @@
+"use client"
+import { link } from "fs";
+//usePathname hook is used to know the current path of the url
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import "./styles.css";
+const navLinks = [
+
+    {name : "Register", href:"/register"},
+    {name : "Login",href:"/login"},
+    {name : "Forgot Password",href:"/forgot-password"},
+];
 export default function AuthLayout({
     children,
 }:{
     children :React.ReactNode;
 
 }){
+    const pathname = usePathname()
     return (
         <div>
-            <h2>Inner Layout </h2>
+            {navLinks.map((link) =>{
+                const isActive = pathname.startsWith(link.href);
+                return (
+                    <Link 
+                        href ={link.href}
+                        key={link.name}
+                        className ={isActive ? "font-bold mr-4":"text-blue-500 mr-4"}
+                        >
+                        {link.name}
+                    </Link>
+                );
+            })}
             {children}
         </div>
     );
