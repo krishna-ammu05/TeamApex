@@ -2,15 +2,17 @@ export default function ComplexDashboardPage({
     children,
     users,
     revenue,
-    notifications
+    notifications,
+    login
 }:{
     children : React.ReactNode;
     users:React.ReactNode;
     revenue:React.ReactNode;
     notifications:React.ReactNode;
+    login :React.ReactNode;
 }){
-
-        return (
+    const isLoggedIn = false;
+        return isLoggedIn ? (
             <div>
                 <div>{children}</div>
                 <div style={{display:"flex"}}>
@@ -22,5 +24,9 @@ export default function ComplexDashboardPage({
 
              </div>
              </div>
+        ):
+        (
+            login
         );
+
 }
