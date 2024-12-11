@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Wonders from "./wonders"
+import wonders from "./wonders"
 import Image from "next/image";
 
 export default function Home (){
