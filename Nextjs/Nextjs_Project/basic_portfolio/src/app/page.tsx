@@ -10,12 +10,15 @@ export default function Home(){
   return (
 
     <>
+    <GlobalStateProvider>
      <Navbar/>
+     {/* <BurgerMenu/> */}
      <Hero/>
     <About/>
     <Projects/>
     <Services/>
     <Footer/>
+    </GlobalStateProvider>
     
     </>
   )

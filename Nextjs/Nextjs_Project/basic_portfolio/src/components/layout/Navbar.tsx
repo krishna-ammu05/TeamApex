@@ -1,4 +1,4 @@
-import MenuItem from "../Navigation/MenuItem"
+import MenuItem from "../menu/elements/MenuItem"
 
 
 function Navbar(){
