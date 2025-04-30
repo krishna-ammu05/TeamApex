@@ -1,10 +1,8 @@
 "use client";
-import * as z from "zod"
-import { startTransition, useTransition,useState } from "react";
-
-import {useForm} from "react-hook-form";
+import * as z from "zod";
+import { startTransition, useTransition, useState } from "react";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import { LoginSchema } from "@/schemas";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
@@ -15,89 +13,88 @@ import {
     FormItem,
     FormLabel,
     FormMessage,
-} from '@/components/ui/form'
-
-import { CardWrapper } from "./card-wrapper"
+} from "@/components/ui/form";
+import { CardWrapper } from "./card-wrapper";
 import { FormError } from "../form-error";
 import { FormSuccess } from "../form-success";
-import {login} from "@/actions/login";
+import { login } from "@/actions/login";
 
-export const LoginForm = () =>{
-    const [error, setError] = useState<string| undefined>("");
-    const [success, setSuccess] = useState<string|undefined>("");
-    const [isPending ,setTransition] = useTransition();
+export const LoginForm = () => {
+    const [error, setError] = useState<string | undefined>(undefined);
+    const [success, setSuccess] = useState<string | undefined>(undefined);
+    const [isPending, setTransition] = useTransition();
+
     const form = useForm<z.infer<typeof LoginSchema>>({
-        resolver:zodResolver(LoginSchema),
-        defaultValues:{
-            email:"",
-            password:"",
+        resolver: zodResolver(LoginSchema),
+        defaultValues: {
+            email: "",
+            password: "",
         },
- });
-
- const onSubmit =(values:z.infer<typeof LoginSchema>) =>{
-    setError("");
-    setSuccess("");
-    startTransition(() =>{
-    login(values)
-        .then((data) =>{
-            setError(data.error);
-            setSuccess(data.success);
-        })
     });
- }
-    return(
+
+    const onSubmit = async (values: z.infer<typeof LoginSchema>) => {
+        setError(undefined);
+        setSuccess(undefined);
+        startTransition(() => {
+            login(values)
+                .then((data) => {
+                    console.log("Login response:", data);
+                    if (data?.error) setError(data.error);
+                    // if (data?.success) setSuccess(data.success);
+                })
+                .catch((err) => {
+                    setError("Something went wrong. Please try again.");
+                    console.error("Login error:", err);
+                });
+        });
+    };
+
+    return (
         <CardWrapper
-        headerLabel ="Welcome Back"
-        backButtonLabel="Dont have an account?"
-        backButtonHref='/auth/register'
-        showSocial>
+            headerLabel="Welcome Back"
+            backButtonLabel="Don't have an account?"
+            backButtonHref="/auth/register"
+            showSocial
+        >
             <Form {...form}>
-                <form
-                 onSubmit={form.handleSubmit(onSubmit)}
-                 className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                     <div className="space-y-6">
-                        <FormField 
+                        <FormField
                             control={form.control}
                             name="email"
-                            render={({field})=>(
+                            render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel> Email</FormLabel>
+                                    <FormLabel>Email</FormLabel>
                                     <FormControl>
-                                        <Input
-                                        {...field}
-                                        placeholder="example@gmail.com"
-                                        type="email" 
-                                        />
-                                    </FormControl>
-                                    <FormMessage/>
-                                </FormItem>
-                            )}/>
-                             <FormField 
-                            control={form.control}
-                            name="password"
-                            render={({field})=>(
-                                <FormItem>
-                                    <FormLabel>Password</FormLabel>
-                                    <FormControl>
-                                        <Input
-                                        {...field}
-                                        placeholder="******"
-                                        type="password" 
-                                        />
+                                        <Input {...field} placeholder="example@gmail.com" type="email" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
-                            )}/>
-                        </div>
-                        <FormError message=""/>
-                        <FormSuccess message=""/>
-                    <Button type="submit" className="w-full">
-                        Login
-                        </Button>            
-                 </form>
-
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="password"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Password</FormLabel>
+                                    <FormControl>
+                                        <Input {...field} placeholder="******" type="password" />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+                    <FormError message={error} />
+                    <FormSuccess message={success} />
+                    <Button type="submit" className="w-full" disabled={isPending}>
+                        {isPending ? "Logging in..." : "Login"}
+                    </Button>
+                </form>
             </Form>
         </CardWrapper>
-    )
-}
-//we are exporting default bcoz it is a component not a page 
+    );
+};
+
+export default LoginForm;

@@ -1,0 +1,44 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Course {
+  id           String      @id
+  title        String
+  description  String
+  imageUrl     String?
+  level        CourseLevel @default(BEGINNER)
+  price        Float       @default(0.0)
+  language     String      @default("English")
+  instructorId String
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime
+  rating       Float       @default(0.0)
+}
+
+model User {
+  id        String   @id
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+}
+
+enum CourseLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum UserRole {
+  STUDENT
+  INSTRUCTOR
+  ADMIN
+}
